@@ -1,9 +1,10 @@
-FROM node:13.6.0-alpine as server
+FROM node:20.9.0-alpine as server
 
 ENV NPM_CONFIG_LOGLEVEL warn
 
 WORKDIR /usr/src/app
 COPY package.json .
+COPY yarn.lock .
 
 RUN yarn install --production
 

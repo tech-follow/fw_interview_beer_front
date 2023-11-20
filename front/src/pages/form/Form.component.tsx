@@ -4,14 +4,15 @@ import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
 
 import styles from "./Form.module.scss";
+import { FormProps } from "./Form.model";
 
-const BeerForm = ({ loading, createBeer }) => (
+const BeerForm: React.FunctionComponent<FormProps> = ({ loading, createBeer }) => (
   <div className={styles.form}>
     <h2>Add a beer</h2>
     <Formik
       initialValues={{ name: "", ibu: "" }}
       validate={values => {
-        let errors = {};
+        let errors: any = {};
         if (!values.name) {
           errors.name = "Required";
         }
@@ -64,7 +65,7 @@ const BeerForm = ({ loading, createBeer }) => (
           <div className={styles.submitButton}>
             <Button
               type="submit"
-              disabled={errors.name || errors.ibu || isSubmitting}
+              disabled={!!(errors.name || errors.ibu || isSubmitting)}
               text="Create"
             />
           </div>

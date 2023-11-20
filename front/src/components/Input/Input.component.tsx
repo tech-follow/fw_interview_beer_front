@@ -1,10 +1,11 @@
 import React from "react";
 import classnames from "classnames/bind";
 import styles from "./Input.module.scss";
+import { InputProps } from "./Input.model";
 
 const classnamesCx = classnames.bind(styles);
 
-export const Input = ({
+export const Input: React.FunctionComponent<InputProps> = ({
   value,
   valid,
   autoCapitalize,
