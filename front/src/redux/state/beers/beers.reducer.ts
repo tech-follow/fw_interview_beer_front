@@ -21,6 +21,19 @@ export const beersReducer = (
       return { ...state, loading: false }
     case BeerActionTypes.BEERS_SET_NEW:
       return { ...state, newItems: [...state.newItems, action.beer] }
+    case BeerActionTypes.BEERS_RATED_SUCCESS:
+    case BeerActionTypes.BEERS_RATED_FAILURE:
+      return { ...state, loading: false }
+    case BeerActionTypes.BEERS_SET_NEW_SCORED:
+      const { beer: beerScored } = action;
+      const idxScoredBeer = state.items.findIndex((item) => item.uuid === beerScored.uuid)
+      if (idxScoredBeer !== -1) {
+        state.items.splice(idxScoredBeer, 1, beerScored)
+      }
+      const idxScoredBeer2 = state.newItems.findIndex((newItem) => newItem.uuid === beerScored.uuid)
+      if (idxScoredBeer2 !== -1) {
+        state.newItems.splice(idxScoredBeer2, 1, beerScored)
+      }
     default:
       return state
   }

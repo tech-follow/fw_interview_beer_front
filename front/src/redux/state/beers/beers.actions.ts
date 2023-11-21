@@ -26,6 +26,21 @@ export const beerActions = {
     type: BeerActionTypes.BEERS_SET_NEW,
     beer,
   }),
+  rateBear: (uuidBeer: Beer["uuid"], rate: number) => ({
+    type: BeerActionTypes.BEERS_RATED,
+    uuidBeer,
+    rate,
+  }),
+  setNewlyScoredBeer: (beer: Beer) => ({
+    type: BeerActionTypes.BEERS_SET_NEW_SCORED,
+    beer,
+  }),
+  rateBeersSuccess: () => ({
+    type: BeerActionTypes.BEERS_RATED_SUCCESS,
+  }),
+  rateBeersFailure: () => ({
+    type: BeerActionTypes.BEERS_RATED_FAILURE,
+  }),
 } as const
 
 export type BeerActionCollection = typeof beerActions
