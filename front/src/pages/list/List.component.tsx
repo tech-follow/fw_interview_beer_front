@@ -2,12 +2,14 @@ import React, { FC } from 'react'
 
 import { BeerList } from '../../components/BeerList'
 import { Button } from '../../components/Button'
+import { RenderCount } from "../../components/RenderCount";
 
 import styles from './List.module.scss'
 import { ListProps } from './List.model'
 
 export const List: FC<ListProps> = ({ beers, loading }) => (
   <div>
+    <RenderCount />
     <div className={styles.list}>
       <BeerList beers={beers} loading={loading} />
     </div>

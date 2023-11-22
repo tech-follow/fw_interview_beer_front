@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import { RenderCount } from "../RenderCount";
+
 import styles from "./Button.module.scss";
 import { ButtonProps } from "./Button.model";
 
@@ -12,6 +14,7 @@ export const Button: React.FC<ButtonProps> = ({
   disabled = false
 }) => (
   <>
+    <RenderCount />
     {type === "button" ||
       (type === "submit" && (
         <button

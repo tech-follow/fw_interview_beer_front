@@ -1,0 +1,17 @@
+@import "../../styles/colors";
+
+.renderCountContainer {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  border: 1px solid $color-primary;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  margin: 0.5rem;
+  background-color: $color-secondary;
+}
+
+.renderCount {
+  color: $color-primary;
+  padding: 0.25rem;
+}

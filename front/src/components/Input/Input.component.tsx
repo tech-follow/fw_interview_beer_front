@@ -2,6 +2,7 @@ import React from "react";
 import classnames from "classnames/bind";
 import styles from "./Input.module.scss";
 import { InputProps } from "./Input.model";
+import { RenderCount } from "../RenderCount";
 
 const classnamesCx = classnames.bind(styles);
 
@@ -26,6 +27,7 @@ export const Input: React.FunctionComponent<InputProps> = ({
 
   return (
     <div className={styles.container}>
+      <RenderCount />
       <input
         type={type}
         autoCapitalize={autoCapitalize ? "sentences" : "off"}
