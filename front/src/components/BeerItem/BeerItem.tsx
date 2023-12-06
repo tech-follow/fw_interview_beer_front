@@ -1,18 +1,19 @@
 import React, { FC } from "react";
+import { useDispatch } from "react-redux";
 
-import styles from "./BeerItem.module.scss";
-import { Rate } from "./Rate/Rate";
+import { beerActions } from "../../redux/state/beers/beers.actions";
 import { BeerItemProps } from "./BeerItem.model";
+import { Rate } from "./Rate/Rate";
 import { RenderCount } from "../RenderCount/RenderCount";
-import { useRateBeer } from "../hooks/useRateBeer";
+import styles from "./BeerItem.module.scss";
 
 export const BeerItem: FC<BeerItemProps> = ({
   beer: { name, ibu, score, uuid },
 }) => {
-  const { rateBeer, selectedScore } = useRateBeer();
+  const dispatch = useDispatch();
 
-  const handleRate = (newScore: string) => {
-    rateBeer(uuid, newScore);
+  const handleRate = (newScore) => {
+    dispatch(beerActions.rateBeer(uuid, newScore));
   };
 
   return (
@@ -22,11 +23,6 @@ export const BeerItem: FC<BeerItemProps> = ({
         <div className={styles.name}>{name}</div>
         <div className={styles.ibu}>IBU: {ibu}</div>
         <div className={styles.score}>Score: {score.toPrecision(1)}</div>
-        {selectedScore !== null && (
-          <div className={styles.score}>
-            <span> Your score : {selectedScore}</span>
-          </div>
-        )}
         <div className={styles.rate}>
           <Rate onRate={handleRate} />
         </div>
